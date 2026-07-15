@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>超黄金！爆裂元気野菜直売所</title>
+  <style>
+    /* --- 超豪華ゴールドテーマ CSS --- */
+    :root {
+      --gold-light: #fff3a8;
+      --gold-main: #ffd700;
+      --gold-dark: #b8860b;
+      --gold-gradient: linear-gradient(135deg, #ffe066 0%, #ffd700 50%, #b8860b 100%);
+      --bg-dark: #110d00;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: radial-gradient(circle, #2a1f00 0%, #110d00 100%);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ヘッダー：爆裂元気スタイル */
+    header {
+      background: var(--gold-gradient);
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 5px 30px rgba(255, 215, 0, 0.4);
+      border-bottom: 5px solid var(--gold-light);
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: #110d00;
+      text-shadow: 3px 3px 0px #fff, -1px -1px 0px #fff, 1px -1px 0px #fff, -1px 1px 0px #fff, 5px 5px 15px rgba(0,0,0,0.5);
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      animation: pulse 1.5s infinite alternate;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      color: #110d00;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.6);
+      display: inline-block;
+      padding: 5px 20px;
+      border-radius: 50px;
+    }
+
+    /* メインコンテナ */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* 導入キャッチコピー */
+    .hero-message {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .hero-message h2 {
+      font-size: 2.5rem;
+      color: var(--gold-main);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+      margin-bottom: 15px;
+    }
+
+    .hero-message p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #f0e6cc;
+    }
+
+    /* 野菜カードエリア */
+    .veggie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .veggie-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 3px solid var(--gold-dark);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+
+    .veggie-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      border-color: var(--gold-main);
+      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
+    }
+
+    /* 金のラメ風グラデーションボーダー効果 */
+    .veggie-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 8px;
+      background: var(--gold-gradient);
+    }
+
+    .veggie-emoji {
+      font-size: 5rem;
+      margin-bottom: 15px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .veggie-card:hover .veggie-emoji {
+      animation: shake 0.5s ease infinite alternate;
+    }
+
+    .veggie-name {
+      font-size: 2rem;
+      color: var(--gold-main);
+      margin-bottom: 10px;
+      font-weight: 900;
+    }
+
+    .veggie-desc {
+      font-size: 1.1rem;
+      color: #e0d0b0;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .click-action-btn {
+      background: var(--gold-gradient);
+      color: #110d00;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      font-weight: 900;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+      transition: transform 0.1s ease, box-shadow 0.3s ease;
+    }
+
+    .click-action-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* コメントセクション */
+    .comment-section {
+      background: rgba(255, 255, 255, 0.03);
+      border: 2px solid rgba(255, 215, 0, 0.2);
+      border-radius: 25px;
+      padding: 40px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    }
+
+    .comment-section h2 {
+      font-size: 2.2rem;
+      color: var(--gold-main);
+      text-align: center;
+      margin-bottom: 30px;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+    }
+
+    .comment-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--gold-light);
+    }
+
+    .form-control {
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid var(--gold-dark);
+      border-radius: 10px;
+      padding: 15px;
+      color: #fff;
+      font-size: 1.1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--gold-main);
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      background: var(--gold-gradient);
+      color: #110d00;
+      border: none;
+      padding: 15px;
+      font-size: 1.3rem;
+      font-weight: 900;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+    }
+
+    /* コメント一覧 */
+    .comments-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .comment-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 5px solid var(--gold-main);
+      border-radius: 0 15px 15px 0;
+      padding: 20px;
+      animation: slideIn 0.4s ease-out;
+    }
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .comment-author {
+      font-weight: bold;
+      color: var(--gold-light);
+    }
+
+    .comment-date {
+      color: #888;
+    }
+
+    .comment-body {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #f0e6cc;
+      word-break: break-all;
+    }
+
+    /* フッター */
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 60px;
+      border-top: 1px solid rgba(255, 215, 0, 0.1);
+    }
+
+    /* アニメーション用 Canvas */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* --- アニメーション定義 --- */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+
+    @keyframes shake {
+      0% { transform: rotate(-5deg); }
+      100% { transform: rotate(5deg); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particle-canvas"></canvas>
+
+  <header>
+    <h1>💥黄金爆裂！激熱ベジタブル直売所💥</h1>
+    <p>ウマさ極限！生命力が大爆発した無敵の野菜たちを見よッ！！！</p>
+  </header>
+
+  <div class="container">
+    
+    <div class="hero-message">
+      <h2>朝採り！鮮度10000%の最強ラインナップ！</h2>
+      <p>大地のゴールドエネルギーを浴びて育った、ウルトラ美味しい野菜たちを大紹介！<br>
+      画像カードをクリックすると、激熱ハッピーパワーが画面中に大爆発するぞ！！！</p>
+    </div>
+
+    <div class="veggie-grid">
+      <div class="veggie-card" onclick="triggerExplosion('🎃')">
+        <div class="veggie-emoji">🎃</div>
+        <div class="veggie-name">ギガかぼちゃ</div>
+        <p class="veggie-desc">ホクホク感が規格外！甘みが凝縮された大地のゴールドヘビー級チャンピオン！煮てよし焼いてよしの大満足ボリューム！</p>
+        <button class="click-action-btn">爆発エネルギーを放つ！</button>
+      </div>
+
+      <div class="veggie-card" onclick="triggerExplosion('🌽')">
+        <div class="veggie-emoji">🌽</div>
+        <div class="veggie-name">シャイニングコーン</div>
+        <p class="veggie-desc">噛んだ瞬間に甘い果汁が弾け飛ぶ！まるでゴールドの宝石を敷き詰めたような、直売所人気No.1のウルトラコーン！</p>
+        <button class="click-action-btn">爆発エネルギーを放つ！</button>
+      </div>
+
+      <div class="veggie-card" onclick="triggerExplosion('🫑')">
+        <div class="veggie-emoji">🫑</div>
+        <div class="veggie-name">バーストピーマン</div>
+        <p class="veggie-desc">パリッと超ジューシー！肉厚で苦味が少なく、ピーマン嫌いも大絶賛で昇天する奇跡のスーパーグリーンゴールド！</p>
+        <button class="click-action-btn">爆発エネルギーを放つ！</button>
+      </div>
+    </div>
+
+    <div class="comment-section">
+      <h2>🔥 激熱！購入者パッションメッセージ掲示板 🔥</h2>
+      
+      <form class="comment-form" id="comment-form">
+        <div class="form-group">
+          <label for="author-input">ニックネーム（元気よく！）</label>
+          <input type="text" id="author-input" class="form-control" placeholder="例：ハイパー野菜大好きマン" required maxlength="20">
+        </div>
+        <div class="form-group">
+          <label for="content-input">パッションコメント</label>
+          <textarea id="content-input" class="form-control" placeholder="例：ここのトウモロコシを食べたら美味すぎて飛んだぜ！！！" required maxlength="300"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">ソウルを込めて送信！！！</button>
+      </form>
+
+      <div class="comments-list" id="comments-list">
+        <div style="text-align: center; color: var(--gold-main);">コメントロード中...🔥</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 黄金爆裂ベジタブル直売所 All Rights Reserved. 無断爆裂禁止！</p>
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { 
+      getFirestore, 
+      collection, 
+      addDoc, 
+      getDocs, 
+      orderBy, 
+      query, 
+      serverTimestamp 
+    } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    // --- Firebase構成 (ここに自分のconfigを貼る) ---
+    const firebaseConfig = {
+    apiKey: "AIzaSyD04fiwYsESrQhbU8Ov3ylsgheoBfo0sUA",
+  authDomain: "sanchoku-69b4a.firebaseapp.com",
+  projectId: "sanchoku-69b4a",
+  storageBucket: "sanchoku-69b4a.firebasestorage.app",
+  messagingSenderId: "221965320108",
+  appId: "1:221965320108:web:c80555cb1b571e90aa8409"
+    };
+
+    // Firebase初期化
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // コメント取得・表示関数
+    async function loadComments() {
+      const commentsList = document.getElementById("comments-list");
+      
+      try {
+        // コメントをcreatedAtの降順(新しい順)でクエリ
+        const q = query(collection(db, "comments"), orderBy("createdAt", "desc"));
+        const querySnapshot = await getDocs(q);
+        
+        commentsList.innerHTML = ""; // 初期化
+
+        if (querySnapshot.empty) {
+          commentsList.innerHTML = `<div style="text-align:center; color:#888; padding:20px;">まだパッションコメントがありません！一番乗りで書き込もうぜ！</div>`;
+          return;
+        }
+
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          
+          // コメントカードの作成
+          const card = document.createElement("div");
+          card.className = "comment-card";
+
+          const headerDiv = document.createElement("div");
+          headerDiv.className = "comment-header";
+
+          const authorSpan = document.createElement("span");
+          authorSpan.className = "comment-author";
+          // セキュリティ対策：textContentを使用
+          authorSpan.textContent = data.author || "匿名戦士";
+
+          const dateSpan = document.createElement("span");
+          dateSpan.className = "comment-date";
+          // タイムスタンプのフォーマット
+          if (data.createdAt) {
+            const d = data.createdAt.toDate();
+            dateSpan.textContent = `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()} ${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}`;
+          } else {
+            dateSpan.textContent = "ジャストナウ！";
+          }
+
+          const bodyDiv = document.createElement("div");
+          bodyDiv.className = "comment-body";
+          // セキュリティ対策：textContentを使用
+          bodyDiv.textContent = data.content || "";
+
+          headerDiv.appendChild(authorSpan);
+          headerDiv.appendChild(dateSpan);
+          card.appendChild(headerDiv);
+          card.appendChild(bodyDiv);
+
+          commentsList.appendChild(card);
+        });
+      } catch (error) {
+        console.error("Error loading comments: ", error);
+        commentsList.innerHTML = `<div style="text-align:center; color:#ff4444; padding:20px;">コメントの読み込みに失敗しました。Configが未設定か、セキュリティルールを確認してください。</div>`;
+      }
+    }
+
+    // コメント送信処理
+    const form = document.getElementById("comment-form");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const authorInput = document.getElementById("author-input");
+      const contentInput = document.getElementById("content-input");
+
+      const author = authorInput.value.trim();
+      const content = contentInput.value.trim();
+
+      if (!author || !content) return;
+
+      try {
+        // collection(db, "comments") への addDoc
+        await addDoc(collection(db, "comments"), {
+          author: author,
+          content: content,
+          createdAt: serverTimestamp()
+        });
+
+        // フォームのリセットとコメント再読み込み
+        authorInput.value = "";
+        contentInput.value = "";
+        
+        // 送信完了時にキラキラを大爆発させる演出
+        triggerExplosion("🎉");
+        
+        await loadComments();
+      } catch (error) {
+        console.error("Error adding document: ", error);
+        alert("送信に失敗しました！FirebaseのConfigが正しく設定されているか確認してください！");
+      }
+    });
+
+    // ページロード時にコメント一覧をロード
+    window.addEventListener("DOMContentLoaded", () => {
+      // Configが書き換えられていない場合の簡易チェック
+      if (firebaseConfig.apiKey === "YOUR_API_KEY") {
+        document.getElementById("comments-list").innerHTML = `
+          <div style="text-align: center; color: #ffaa00; border: 2px dashed #ffaa00; padding: 20px; border-radius: 10px;">
+            ⚠️ FirebaseのConfigが未設定です！<br>
+            HTMLファイル内の <strong>firebaseConfig</strong> をお使いのプロジェクトのものに書き換えると、リアルタイムコメント機能が起動します！
+          </div>
+        `;
+      } else {
+        loadComments();
+      }
+    });
+  </script>
+
+  <script>
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+
+    // キャンバスサイズをウィンドウに追従
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    let particles = [];
+
+    class Particle {
+      constructor(x, y, emoji) {
+        this.x = x;
+        this.y = y;
+        this.emoji = emoji;
+        this.isGoldDust = (emoji === '✨');
+        
+        // 飛び散る角度とスピード
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 15 + 5; // 激しいスピード
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed;
+        
+        this.gravity = 0.25; // 重力で落ちる
+        this.alpha = 1;
+        this.decay = Math.random() * 0.015 + 0.01; // 消えるまでの速度
+        this.rotation = Math.random() * 360;
+        this.rotationSpeed = (Math.random() - 0.5) * 10;
+        this.size = this.isGoldDust ? Math.random() * 15 + 10 : Math.random() * 25 + 25;
+      }
+
+      update() {
+        this.vx *= 0.98; // 空気抵抗
+        this.vy += this.gravity;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.alpha -= this.decay;
+        this.rotation += this.rotationSpeed;
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.translate(this.x, this.y);
+        ctx.rotate((this.rotation * Math.PI) / 180);
+        
+        if (this.isGoldDust) {
+          // ゴールドグリッター
+          ctx.font = `${this.size}px Arial`;
+          ctx.shadowBlur = 15;
+          ctx.shadowColor = '#ffd700';
+          ctx.fillText('✨', 0, 0);
+        } else {
+          // 野菜絵文字
+          ctx.font = `${this.size}px Arial`;
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = '#fff';
+          ctx.fillText(this.emoji, 0, 0);
+        }
+        ctx.restore();
+      }
+    }
+
+    // パーティクルアニメーションループ
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      particles = particles.filter(p => p.alpha > 0);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // クリック時に大爆発を起こすトリガー関数
+    function triggerExplosion(emoji) {
+      // 画面中央付近、またはクリックされた要素の位置から射出（今回は画面中央付近に派手に散らす）
+      const x = window.innerWidth / 2;
+      const y = window.innerHeight / 2 - 100;
+
+      // 1回のクリックで計80個のパーティクルを大爆発させる！
+      for (let i = 0; i < 30; i++) {
+        particles.push(new Particle(x, y, emoji));
+      }
+      for (let i = 0; i < 50; i++) {
+        particles.push(new Particle(x, y, '✨')); // 金のキラキラ
+      }
+    }
+  </script>
+</body>
+</html>
